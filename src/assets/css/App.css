@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -21,4 +21,18 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+} */
+
+.Title {
+  text-align : center;
+  background-color: #121212;
+  height: 40px;
+  color: aliceblue;
+  font-size: 35px;
+}
+.Title input {
+  vertical-align: center;
+  width : 300px;
+  font-size: 16px;
+  /* color: #cccccc; */
 }
