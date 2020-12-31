@@ -1,8 +1,8 @@
 // https://umijs.org/config/
-import { defineConfig } from 'umi';
-import defaultSettings from './defaultSettings';
-import proxy from './proxy';
-import routes from './routes';
+import { defineConfig } from "umi";
+import defaultSettings from "./defaultSettings";
+import proxy from "./proxy";
+import routes from "./routes";
 
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
@@ -12,17 +12,17 @@ export default defineConfig({
     hmr: true,
   },
   history: {
-    type: 'browser',
+    type: "browser",
   },
   locale: {
     // default zh-CN
-    default: 'zh-CN',
+    default: "zh-CN",
     antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
     baseNavigator: true,
   },
   dynamicImport: {
-    loading: '@/components/PageLoading/index',
+    loading: "@/components/PageLoading/index",
   },
   targets: {
     ie: 11,
@@ -31,21 +31,32 @@ export default defineConfig({
   routes,
   // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {
-    'primary-color': defaultSettings.primaryColor,
+    "primary-color": defaultSettings.primaryColor,
   },
   title: false,
   ignoreMomentLocale: true,
-  proxy: proxy[REACT_APP_ENV || 'dev'],
+  proxy: proxy[REACT_APP_ENV || "dev"],
   manifest: {
-    basePath: '/',
+    basePath: "/",
   },
   esbuild: {},
   // https://github.com/zthxxx/react-dev-inspector
-  plugins: ['react-dev-inspector/plugins/umi/react-inspector'],
+  plugins: ["react-dev-inspector/plugins/umi/react-inspector"],
   inspectorConfig: {
     // loader options type and docs see below
     exclude: [],
     babelPlugins: [],
     babelOptions: {},
   },
+  externals: {
+    cytoscape: "cytoscape",
+    tippy: "tippy",
+  },
+  headScripts: [
+    "https://unpkg.com/cytoscape/dist/cytoscape.min.js",
+    "https://unpkg.com/popper.js@1.16.0/dist/umd/popper.js",
+    "https://unpkg.com/cytoscape-popper@1.0.7/cytoscape-popper.js",
+    "https://unpkg.com/tippy.js@5.2.1/dist/tippy-bundle.iife.min.js",
+  ],
+  styles: [`https://unpkg.com/tippy.js@5.2.1/dist/tippy.css`],
 });

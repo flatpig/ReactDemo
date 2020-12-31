@@ -1,35 +1,43 @@
 export default [
   {
-    path: '/',
-    component: '../layouts/BlankLayout',
+    path: "/",
+    component: "../layouts/BlankLayout",
     routes: [
       {
-        path: '/user',
-        component: '../layouts/UserLayout',
+        path: "/user",
+        component: "../layouts/UserLayout",
         routes: [
           {
-            name: 'login',
-            path: '/user/login',
-            component: './user/login',
+            name: "login",
+            path: "/user/login",
+            component: "./user/login",
           },
         ],
       },
       {
-        path: '/',
-        component: './home',
+        path: "/",
+        component: "./home",
       },
       {
-        path: '/picHeight',
-        component: './picHeight',
+        path: "/picHeight",
+        component: "./picHeight",
       },
       {
-        path: '/picJS',
-        component: './picJS',
+        path: "/picJS",
+        component: "./picJS",
       },
       {
-        path: '/css',
-        component: './CSSSprite',
-      }
+        path: "/picCSS",
+        component: "./picCSS",
+      },
+      {
+        path: "/css",
+        component: "./CSSSprite",
+      },
+      {
+        path: "/testSvg",
+        component: "./testSvg",
+      },
       // {
       //   path: '/',
       //   component: '../layouts/SecurityLayout',
@@ -84,6 +92,6 @@ export default [
     ],
   },
   {
-    component: './404',
+    component: "./404",
   },
 ];
