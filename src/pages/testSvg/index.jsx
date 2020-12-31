@@ -229,8 +229,8 @@ const SVG = () => {
     const cy = cyRef.current;
     cy.nodes().on("mouseover", (event) => {
       const { target } = event;
-      // cy.css({ cursor: "point" });
       target.addClass("active");
+      event.cy.container().style.cursor = "pointer";
       target.neighborhood("edge").addClass("edgeActive");
       cyPopperRef.current = target.popper({
         content: createContentFromComponent(<ReactButton />),
@@ -246,27 +246,35 @@ const SVG = () => {
       if (cyPopperRef) {
         cyPopperRef.current.destroy();
       }
+      event.cy.container().style.cursor = "default";
       target.removeClass("active");
       target.neighborhood("edge").removeClass("edgeActive");
     });
   }, []);
   return (
-    <div className={cx(layout)}>
+    <div className={cx("layout")}>
       <CytoscapeComponent
         elements={elements}
         // userPanningEnabled={false} // 用户不能拖动基准位置
         // autolock={true}
         // autoungrabify={true}
-        // ref={cy_ref}
+        ref={cy_ref}
         cy={(cy) => {
           cyRef.current = cy;
           // setCy(cy);
         }}
+        maxZoom={2}
+        minZoom={0.5}
         stylesheet={styleSheet}
         // ref={graph}
         pan={{ x: 400, y: 200 }}
         layout={layout}
-        style={{ width: "1200px", height: "700px", backgroundColor: "#F6F6F6" }}
+        style={{
+          width: "1200px",
+          height: "700px",
+          backgroundColor: "#F6F6F6",
+          // cursor: "point",
+        }}
       />
     </div>
   );
