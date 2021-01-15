@@ -1,5 +1,6 @@
 .layout {
   padding: 0 44px;
+  background: burlywood;
   .waterfall {
     // display: flex;
     // flex-wrap: wrap;
@@ -8,11 +9,13 @@
     padding: 20px 0px;
     .imageBox {
       margin: 20px;
-      display: block;
+      // display: block;
+      background: cadetblue;
       // flex-grow: 1;
       float: left;
       position: relative;
       overflow: hidden;
+      transition: width 0.01s ease-in-out, height 0.01s ease-in-out;
       img {
         width: 100%;
         &:after {

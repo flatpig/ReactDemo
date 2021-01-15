@@ -35,6 +35,10 @@ export default [
         component: "./picCSS2",
       },
       {
+        path: "/picCSS3",
+        component: "./picCSS3",
+      },
+      {
         path: "/css",
         component: "./CSSSprite",
       },
