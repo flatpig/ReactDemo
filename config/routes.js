@@ -31,12 +31,20 @@ export default [
         component: "./picCSS",
       },
       {
+        path: "/picCSS2",
+        component: "./picCSS2",
+      },
+      {
         path: "/css",
         component: "./CSSSprite",
       },
       {
         path: "/testSvg",
         component: "./testSvg",
+      },
+      {
+        path: "/testEcharts",
+        component: "./testEcharts",
       },
       // {
       //   path: '/',

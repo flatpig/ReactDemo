@@ -1,29 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import styles from "./style.less";
-import { useSize, useReactive } from "ahooks";
+import { useSize, useDebounceFn } from "ahooks";
 
-const baseHeight = 340;
-const reducer = (state, action) => {
-  const { payload, type } = action;
-  // console.log(state);
-  switch (type) {
-    case "insert":
-      const newList = state[payload.index] || [];
-      newList.push(payload.value);
-      // const newMap = state;
-      state[payload.index] = [...newList];
-      return { ...state };
-    case "insertEmpty":
-      // const newList2 = [];
-      // const newMap2 = state;
-      // state[payload.index] = [];
-      return { ...state };
-    case "clear":
-      return {};
-    default:
-      throw new Error();
-  }
-};
 const Home = () => {
   // const myMap = useReactive({});
   const [myMap, setMyMap] = useState({});
@@ -33,10 +11,11 @@ const Home = () => {
   const [width, setWidth] = useState(0);
   const rowWidth = useRef(0);
   const rowCount = useRef(0);
-
+  // const { run } = useDebounceFn(() => resize(), { wait: 500 });
   useEffect(() => {
     // console.log(size.width);
-    let timer = setTimeout(resize, 1);
+    // run();
+    let timer = setTimeout(resize, 10);
     return () => {
       clearTimeout(timer);
     };
@@ -45,7 +24,6 @@ const Home = () => {
     const updateWindowDimensions = () => {
       const newWidth = window.innerWidth;
       setWidth(newWidth);
-      // console.log("updating height");
     };
 
     window.addEventListener("resize", updateWindowDimensions);
